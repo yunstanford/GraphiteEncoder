@@ -11,7 +11,7 @@ install_requires = []
 tests_require = []
 
 setup(name='GraphiteEncoder',
-      version='0.1.1',
+      version='0.1.2',
       description='',
       long_description=open(README_PATH).read(),
       author='Yun Xu',
