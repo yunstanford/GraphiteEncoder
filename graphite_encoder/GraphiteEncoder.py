@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import urllib.parse
+import urllib
 
 """
 	Graphite expects everything to be just ASCII to split/processing them, and then make directories based on metric name.
@@ -64,8 +64,8 @@ class GraphiteEncoder:
 		"""
 		valid_graphite_metric_name = ""
 		try:
-			valid_graphite_metric_name = urllib.parse.quote(section_name.encode('idna')).replace(".", "%2E")
-		except Exception as e:
+			valid_graphite_metric_name = urllib.quote(unicode(section_name, 'utf-8').encode('idna')).replace(".", "%2E")
+		except Exception, e:
 			raise e
 		return valid_graphite_metric_name
 		
@@ -77,12 +77,10 @@ class GraphiteEncoder:
 		"""
 		display_metric_name = ""
 		try:
-			display_metric_name = bytes(urllib.parse.unquote(idna_str), 'utf-8').decode('idna')
-		except Exception as e:
+			display_metric_name = urllib.unquote(idna_str).decode('idna').encode('utf-8')
+		except Exception, e:
 			raise e
 		return display_metric_name
-
-
 
 
 def dummy_data():
@@ -97,10 +95,10 @@ def dummy_data():
 	print(from_graphite)
 	print('============= Test Consistency ===============', name == from_graphite)
 
+
 def main():
 	dummy_data()
 
+
 if __name__ == '__main__':
 	main()
-
-
