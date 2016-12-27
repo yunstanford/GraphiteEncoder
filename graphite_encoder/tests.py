@@ -15,6 +15,10 @@ from GraphiteEncoder import GraphiteEncoder
     '_ . .fda',
     '_.',
     '汉 字.汉*字',
+    '%2D%2Ea bcd',
+    '_hello world.%2E',
+    'www.zillow.com.%2Ehello%2D',
+    '',
     ('a' * 128)     # test for very long string
 ])
 def test_consistency(name):
