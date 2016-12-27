@@ -14,7 +14,8 @@ from GraphiteEncoder import GraphiteEncoder
     'a.b.___c d _feg',
     '_ . .fda',
     '_.',
-    '汉 字.汉*字'
+    '汉 字.汉*字',
+    ('a' * 128)     # test for very long string
 ])
 def test_consistency(name):
 	assert GraphiteEncoder.decode(GraphiteEncoder.encode(name)) == name
